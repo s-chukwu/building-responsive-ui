@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ISUSU is a student finance tracker for logging daily expenses, setting spending caps, and seeing your money in RWF, NGN, and USD.">
+  <title>ISUSU Finance Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="#dashboard" class="logo" aria-label="logo - go to dashboard">
+        <img src="assets/logo.png" alt="logo" class="logo-img" width="96" height="96">
+      </a>
+
+      <nav id="main-nav" class="main-nav" role="navigation" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+          <li><a href="#dashboard" class="nav-link active" data-section="dashboard">Dashboard</a></li>
+          <li><a href="#records" class="nav-link" data-section="records">Records</a></li>
+          <li><a href="#add" class="nav-link" data-section="add">Add New</a></li>
+          <li><a href="#settings" class="nav-link" data-section="settings">Settings</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode" title="Toggle dark mode">
+          <span class="theme-icon">&#9789;</span>
+        </button>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section id="about" class="page-section hidden" aria-labelledby="about-heading">
+      <div class="section-container">
+        <h1 id="about-heading">What is ISUSU?</h1>
+
+        <p class="section-desc">
+          Isusu is a traditional rotating savings system from West and Central Africa where a group of people contribute money at regular intervals and each person takes a turn collecting the full amount. It teaches patience, consistency, and accountability with your finances.
+        </p>
+
+        <blockquote class="about-quote">
+          "Beware of little expenses. A small leak will sink a great ship."
+          <cite>Benjamin Franklin</cite>
+        </blockquote>
+
+        <p class="section-desc">
+          ISUSU the app takes that same energy and puts it in your pocket. Every franc matters when you are a student. Whether it is lunch at the cafeteria, transport across Kigali, or a course textbook that costs more than you expected, this tracker helps you see the full picture. No accounts, no cloud, no sharing your data with anyone. Everything stays on your device.
+        </p>
+
+        <p class="section-desc">
+          The goal is simple: know where your money goes so you can make better choices. Start small, stay consistent, and watch your habits change.
+        </p>
+
+        <div class="about-contact">
+          <h2>Built by</h2>
+          <p>Sochukwuma Isaac Chukwu, student at African Leadership University</p>
+          <ul class="contact-list">
+            <li><a href="https://github.com/s-chukwu" target="_blank" rel="noopener">GitHub: s-chukwu</a></li>
+            <li><a href="mailto:s.chukwu@alueducation.com">s.chukwu@alueducation.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="dashboard" class="page-section" aria-labelledby="dashboard-heading">
+      <div class="section-container">
+        <h1 id="dashboard-heading">Dashboard</h1>
+        <p class="section-desc">A quick look at your spending. Numbers update as you add and edit records.</p>
+
+        <div class="currency-toggler" role="radiogroup" aria-label="Display currency">
+          <button class="curr-btn active" data-curr="RWF">RWF</button>
+          <button class="curr-btn" data-curr="NGN">NGN</button>
+          <button class="curr-btn" data-curr="USD">USD</button>
+        </div>
+
+        <div class="stats-grid" id="stats-grid" aria-live="polite">
+        </div>
+
+        <div class="cap-indicator" id="cap-indicator" aria-live="polite">
+        </div>
+
+        <div class="dashboard-row">
+          <div class="chart-container" id="chart-container">
+            <h2>Last 7 Days</h2>
+            <div class="bar-chart" id="bar-chart"></div>
+          </div>
+
+          <div class="top-category-card" id="top-category">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="records" class="page-section hidden" aria-labelledby="records-heading">
+      <div class="section-container">
+        <h1 id="records-heading">Records</h1>
+        <p class="section-desc">All your transactions in one place. Use regex to filter and find exactly what you need.</p>
+
+        <div class="records-toolbar">
+          <div class="search-group">
+            <label for="search-input" class="sr-only">Search records</label>
+            <input type="text" id="search-input" class="search-input" placeholder="Search">
+            <label class="case-toggle">
+              <input type="checkbox" id="case-sensitive">
+              <span>Aa</span>
+            </label>
+          </div>
+          <div class="sort-group">
+            <label for="sort-select" class="sr-only">Sort records by</label>
+            <select id="sort-select" class="sort-select">
+              <option value="date-desc">Date (newest first)</option>
+              <option value="date-asc">Date (oldest first)</option>
+              <option value="amount-desc">Amount (high to low)</option>
+              <option value="amount-asc">Amount (low to high)</option>
+              <option value="description-asc">Description (A to Z)</option>
+              <option value="description-desc">Description (Z to A)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="records-table-wrapper" role="region" aria-label="Transaction records" tabindex="0">
+          <table class="records-table" id="records-table">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="records-body">
+            </tbody>
+          </table>
+          <div class="cards-container" id="cards-container">
+          </div>
+          <p class="no-records" id="no-records">No records yet. Head over to Add New to get started.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="add" class="page-section hidden" aria-labelledby="add-heading">
+      <div class="section-container">
+        <h1 id="add-heading">Add a Transaction</h1>
+        <p class="section-desc">Record a new expense. Fields with a star are required.</p>
+
+        <form id="transaction-form" class="transaction-form" novalidate>
+          <input type="hidden" id="edit-id">
+
+          <div class="form-field">
+            <label for="desc-input">Description <span class="required">*</span></label>
+            <input type="text" id="desc-input" required autocomplete="off">
+            <span class="field-error" id="desc-error"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="amount-input">Amount (RWF) <span class="required">*</span></label>
+            <input type="text" id="amount-input" required inputmode="decimal" autocomplete="off">
+            <span class="field-error" id="amount-error"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="date-input">Date <span class="required">*</span></label>
+            <input type="date" id="date-input" required>
+            <span class="field-error" id="date-error"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="category-input">Category <span class="required">*</span></label>
+            <select id="category-input" required>
+            </select>
+            <span class="field-error" id="category-error"></span>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save Transaction</button>
+            <button type="button" class="btn btn-ghost" id="cancel-edit">Cancel</button>
+          </div>
+
+          <div id="form-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <section id="settings" class="page-section hidden" aria-labelledby="settings-heading">
+      <div class="section-container">
+        <h1 id="settings-heading">Settings</h1>
+        <p class="section-desc">Manage your categories, spending cap, currencies, and data.</p>
+
+        <div class="settings-grid">
+          <div class="settings-card">
+            <h2>Categories</h2>
+            <p class="card-hint">Add or remove spending categories. Removing a category does not delete transactions that already use it.</p>
+            <ul class="category-list" id="category-list">
+            </ul>
+            <form id="category-form" class="inline-form">
+              <label for="new-category" class="sr-only">New category name</label>
+              <input type="text" id="new-category" placeholder="New category name" autocomplete="off">
+              <button type="submit" class="btn btn-small">Add</button>
+              <span class="field-error" id="category-form-error"></span>
+            </form>
+          </div>
+
+          <div class="settings-card">
+            <h2>Spending Cap</h2>
+            <p class="card-hint">Set a monthly target for yourself. The dashboard will show how much is left before you hit it.</p>
+            <div class="cap-field">
+              <label for="cap-input">Cap amount (RWF)</label>
+              <input type="text" id="cap-input" inputmode="numeric" value="300000" autocomplete="off">
+              <button type="button" class="btn btn-small" id="save-cap">Save Cap</button>
+            </div>
+            <span id="cap-status" style="font-size:0.82rem;color:#555;margin-top:6px;display:block;"></span>
+          </div>
+
+          <div class="settings-card">
+            <h2>Exchange Rates</h2>
+            <p class="card-hint">Set manual conversion rates. Changing these updates the dashboard totals in other currencies.</p>
+            <div class="currency-group">
+              <div class="currency-field">
+                <label for="rate-ngn">1 RWF to NGN</label>
+                <input type="text" id="rate-ngn" inputmode="decimal" value="0.93">
+              </div>
+              <div class="currency-field">
+                <label for="rate-usd">1 RWF to USD</label>
+                <input type="text" id="rate-usd" inputmode="decimal" value="0.00068">
+              </div>
+            </div>
+            <button type="button" class="btn btn-small" id="save-rates">Save Rates</button>
+          </div>
+
+          <div class="settings-card">
+            <h2>Import and Export</h2>
+            <p class="card-hint">Back up your transactions as a JSON file. Imported files are validated before they replace your data.</p>
+            <div class="import-export-row">
+              <button type="button" class="btn" id="export-btn">Export JSON</button>
+              <label class="btn btn-outline">
+                Import JSON
+                <input type="file" id="import-file" accept=".json" hidden>
+              </label>
+            </div>
+            <div id="import-status" role="status" aria-live="polite"></div>
+          </div>
+
+          <div class="settings-card danger-card">
+            <h2>Reset All Data</h2>
+            <p class="card-hint">Clears every transaction you have recorded. This cannot be undone.</p>
+            <button type="button" class="btn btn-danger" id="reset-btn">Reset All Data</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <p>ISUSU &copy; 2026 &#183; Built by Sochukwuma Isaac Chukwu for ALU</p>
+  </footer>
+
+  <script type="module" src="scripts/app.js"></script>
+</body>
+</html>
