@@ -1,0 +1,65 @@
+[
+  {
+    "id": "rec_1001",
+    "description": "Lunch at cafeteria",
+    "amount": 2500,
+    "category": "Food",
+    "date": "2025-06-15",
+    "createdAt": "2025-06-15T10:00:00.000Z",
+    "updatedAt": "2025-06-15T10:00:00.000Z"
+  },
+  {
+    "id": "rec_1002",
+    "description": "Data bundles for the week",
+    "amount": 3000,
+    "category": "Other",
+    "date": "2025-06-15",
+    "createdAt": "2025-06-15T09:00:00.000Z",
+    "updatedAt": "2025-06-15T09:00:00.000Z"
+  },
+  {
+    "id": "rec_1003",
+    "description": "Kigali bus fare round trip",
+    "amount": 1500,
+    "category": "Transport",
+    "date": "2025-06-14",
+    "createdAt": "2025-06-14T14:00:00.000Z",
+    "updatedAt": "2025-06-14T14:00:00.000Z"
+  },
+  {
+    "id": "rec_1004",
+    "description": "Printing lecture slides",
+    "amount": 800,
+    "category": "Fees",
+    "date": "2025-06-13",
+    "createdAt": "2025-06-13T11:00:00.000Z",
+    "updatedAt": "2025-06-13T11:00:00.000Z"
+  },
+  {
+    "id": "rec_1005",
+    "description": "Movie night with roommates",
+    "amount": 5000,
+    "category": "Entertainment",
+    "date": "2025-06-12",
+    "createdAt": "2025-06-12T20:00:00.000Z",
+    "updatedAt": "2025-06-12T20:00:00.000Z"
+  },
+  {
+    "id": "rec_1006",
+    "description": "Course textbook Statistics",
+    "amount": 18000,
+    "category": "Books",
+    "date": "2025-06-10",
+    "createdAt": "2025-06-10T08:00:00.000Z",
+    "updatedAt": "2025-06-10T08:00:00.000Z"
+  },
+  {
+    "id": "rec_1007",
+    "description": "Coffee at campus cafe",
+    "amount": 1200,
+    "category": "Food",
+    "date": "2025-06-09",
+    "createdAt": "2025-06-09T07:30:00.000Z",
+    "updatedAt": "2025-06-09T07:30:00.000Z"
+  }
+]
